@@ -45,16 +45,16 @@ Table \autoref{tbl:cohortz} lists these sources and their properties. For brevit
 [][tbl:cohortz]
 |  | n images | n src normal | \% left eye | \% curated | \% old was normal | \% new is normal |
 |---|---|---|---|---|---|---|
-| CHASEDB1 | 28 | 0 | 0.50 | 1.00 | 0.000 | 0.000 |
-| HRF | 45 | 15 | 0.47 | 1.00 | 0.333 | 0.289 |
-| STARE | 397 | 36 | 0.46 | 1.00 | 0.091 | 0.076 |
-| PAPILA | 488 | 333 | 0.50 | 1.00 | 0.682 | 0.168 |
-| IDRiD | 597 | 168 | 0.52 | 1.00 | 0.281 | 0.201 |
-| Retina Cataracts | 601 | 300 | 0.50 | 1.00 | 0.499 | 0.186 |
-| FIVE | 800 | 200 | 0.47 | 1.00 | 0.250 | 0.176 |
-| Kaggle1000 | 1000 | 38 | 0.42 | 1.00 | 0.038 | 0.038 |
-| ODIR | 7000 | 2816 | 0.50 | 1.00 | 0.402 | 0.117 |
-| EyePACS | 35108 | 25802 | 0.50 | 0.41 | 0.735 | 0.149 |
+| CHASEDB1 [@fraz_chase_db1_2012] | 28 | 0 | 0.50 | 1.00 | 0.000 | 0.000 |
+| HRF [@odstrcilik_retinal_2013] | 45 | 15 | 0.47 | 1.00 | 0.333 | 0.289 |
+| STARE [@hoover_locating_2000] | 397 | 36 | 0.46 | 1.00 | 0.091 | 0.076 |
+| PAPILA [@kovalyk_papila:_2022] | 488 | 333 | 0.50 | 1.00 | 0.682 | 0.168 |
+| IDRiD [@porwal_indian_2018] | 597 | 168 | 0.52 | 1.00 | 0.281 | 0.201 |
+| Retina Cataracts [@noauthor_cataract_nodate] | 601 | 300 | 0.50 | 1.00 | 0.499 | 0.186 |
+| FIVES [@jin_fives:_2022] | 800 | 200 | 0.47 | 1.00 | 0.250 | 0.176 |
+| Kaggle1000 [@cen_automatic_2021] | 1000 | 38 | 0.42 | 1.00 | 0.038 | 0.038 |
+| ODIR [@noauthor_odir-2019_nodate,@noauthor_ocular_nodate] | 7000 | 2816 | 0.50 | 1.00 | 0.402 | 0.117 |
+| EyePACS [@noauthor_diabetic_nodate] | 35108 | 25802 | 0.50 | 0.41 | 0.735 | 0.149 |
 | Total | 46064 | 29708 | 0.48 | 0.94 | 0.331 | 0.140 |
 | Without EyePACS | 10956 | 3906 | 0.48 | 1.00 | 0.286 | 0.139 |
 

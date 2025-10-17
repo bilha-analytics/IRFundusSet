@@ -55,8 +55,8 @@ Table \autoref{tbl:cohortz} lists these sources and their properties. For brevit
 | Kaggle1000 [@cen_automatic_2021] | 1000 | 38 | 0.42 | 1.00 | 0.038 | 0.038 |
 | ODIR [@noauthor_odir-2019_nodate,@noauthor_ocular_nodate] | 7000 | 2816 | 0.50 | 1.00 | 0.402 | 0.117 |
 | EyePACS [@noauthor_diabetic_nodate] | 35108 | 25802 | 0.50 | 0.41 | 0.735 | 0.149 |
-| Total | 46064 | 29708 | 0.48 | 0.94 | 0.331 | 0.140 |
-| Without EyePACS | 10956 | 3906 | 0.48 | 1.00 | 0.286 | 0.139 |
+| **Total** | 46064 | 29708 | 0.48 | 0.94 | 0.331 | 0.140 |
+| **Total Without EyePACS** | 10956 | 3906 | 0.48 | 1.00 | 0.286 | 0.139 |
 
 
 
@@ -74,6 +74,7 @@ irf_dataset = IRFundusSet(out_dir="../output_irfundus_set__256",
                         ## Set which of the 10 public sources to unify 
                         in_cohorts_config="../cohorts.ini", 
                         generate_only=False,
+                        force_reload=False,
                         ## Setting which column to use for target label 
                         target_col=None,     
                         ## Provide transforms for X image features or y-target labels   
@@ -90,11 +91,11 @@ The Python modules standardize both the meta information and pixel data of the r
 We leverage existing extensive literature (such as clinical literature, visual atlases and specialized guidelines) to resolve the varying definitions of what a healthy on non-pathological observation entails. Three rounds of manual curation determine a global non-pathological label, incrementally refining the quality of the label and eventually updating the consolidated data catalogue with this label.
 Figure \autoref{fig:flow-chart}  summarizes the steps taken to arrive at this label.
 
-![Flow chart depicting the process of curating non-pathological observations and creating the new `is_normal` label.\label{fig:flow-chart}](curate-flow.jpg){width="70%"}
+![Flow chart depicting the process of curating non-pathological observations and creating the new `is_normal` label.\label{fig:flow-chart}](curate-flow.jpg){width="70%" .center-image}
 
 
 ## Summary of data properties
-Of the 46,064 images, 25,406 images successfully undergo the curation and annotation process, resulting in 19,871 images being assigned a new `is_normal` label indicating if they are non-pathological or not. We determine 3,515 to be healthy/Normal/non-pathological across the sources. Figure \autoref{fig:img-propz}  qualititatively explores for biases in the newly curateed `is_nromal` label using t-SNE components of the harmonized images (from standardizing with mean and standard deviation). There is no apparent clustering that discernably deliniates the images based on the label. Figure \autoref{fig:examples} is a snapshot of the resulting unified catalogue, illustrating the metadata collected for the images. 
+Of the 46,064 images, 25,406 images successfully undergo the curation and annotation process, resulting in 19,871 images being assigned a new `is_normal` label indicating if they are non-pathological or not. We determine 3,515 to be healthy/Normal/non-pathological across the sources. Figure \autoref{fig:img-propz}  qualititatively explores for biases in the newly curateed `is_normal` label using t-SNE components of the harmonized images (from standardizing with mean and standard deviation). There is no apparent clustering that discernably deliniates the images based on the label. Figure \autoref{fig:examples} is a snapshot of the resulting unified catalogue, illustrating the metadata collected for the images. 
 
 
 ![Properties of unified image data.\label{fig:img-propz}](image-xtics-plot1.jpg)

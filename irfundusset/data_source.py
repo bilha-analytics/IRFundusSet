@@ -117,6 +117,46 @@ class DataframeDataset:
     _listing = None
     
     def __init__(self, csv, xtransform=None, ytransform=None, target_col=None):
+        """
+        Data source class that initializes dataset listing and optional transforms.
+        Parameters
+        ----------
+        csv : str | os.PathLike | file-like | pandas.DataFrame
+            Path to a CSV file (or any object accepted by the class's internal
+            listing loader) that contains the dataset listing or directly a table-like
+            object describing samples and their labels. Passed through to
+            self._init_listing(...) to populate internal sample/label structures.
+        xtransform : callable, optional
+            A function or transform applied to input features (X) when samples are
+            loaded or requested. Typical signature: xtransform(x) -> transformed_x.
+            If None, no transformation is applied.
+        ytransform : callable, optional
+            A function or transform applied to target values (y) when labels are
+            loaded or requested. Typical signature: ytransform(y) -> transformed_y.
+            If None, no transformation is applied.
+        target_col : str, optional
+            Name of the target column to use from the listing. If None (default),
+            the class will use the constant VAR_COL_IS_NORMAL as the target column.
+            The provided name must be one of the recognized columns in
+            self.target_colz; otherwise an AssertionError is raised.
+        Attributes
+        ----------
+        xtransform : callable or None
+            Stores the provided xtransform for later use.
+        ytransform : callable or None
+            Stores the provided ytransform for later use.
+        target_col : str
+            The resolved target column name used by the instance.
+        target_colz : iterable
+            Expected to exist on the class or instance prior to initialization;
+            used to validate the provided target_col.
+        Other side effects
+        ------------------
+        The initializer validates target_col against self.target_colz, assigns the
+        transforms and target column, and calls self._init_listing(csv) to build the
+        internal dataset listing. An AssertionError is raised if target_col is not
+        recognized.
+        """
         assert (target_col is None or target_col in self.target_colz),\
             f"'{target_col}' is not recognized. Available options are {self.target_colz}"
         self.xtransform = xtransform 
@@ -226,6 +266,23 @@ class CohortDataSource:
     - cohort specif operations @ parse source directory, preprocess images (fit FOV, resize, )
     '''        
     def __init__(self, sxn_name) -> None:
+        """
+        Representation of a cohort/source-section within the IRFundusSet dataset.
+        Parameters
+        ----------
+        sxn_name : str
+            Name or identifier for the section.
+        Attributes
+        ----------
+        name : str
+            The name assigned to this section (from sxn_name).
+        is_cohort : bool
+            Indicates whether this section represents a cohort. Set to True by default.
+        Notes
+        -----
+        This class currently initializes all instances as cohorts (is_cohort=True).
+        Adjust the is_cohort attribute after construction if a non-cohort section is needed.
+        """     
         self.name = sxn_name
         self.is_cohort = True 
         
@@ -339,6 +396,46 @@ class HarmonizedDataSource(SaveableSource):
     - Entry point for generate and load/get dataset 
     '''
     def __init__(self, out_dir, out_image_w=32) -> None:
+        """
+        Class initializer.
+        Initializes an instance representing a dataset output location and basic metadata.
+        Parameters
+        ----------
+        out_dir : str or os.PathLike
+            Path to the target output directory. The instance will compute its own
+            output directory by taking the parent of this path and appending a name
+            derived from that parent directory and the output image width (see
+            Attributes.name).
+        out_image_w : int, optional
+            Target output image width used to form the instance name and stored on the
+            instance (default: 32).
+        Attributes
+        ----------
+        name : str
+            A generated identifier for this instance, formed as "{parent_name}__{out_image_w:03d}".
+        is_cohort : bool
+            Flag indicating whether this dataset represents a cohort. Initialized to False.
+        out_image_w : int
+            The output image width provided at initialization.
+        out_dir : pathlib.Path
+            Resolved path for the instance output directory: (Path(out_dir).parent / name).resolve()
+        collection : list
+            The collection object attached to this instance. After calling dstore.load_dstore()
+            the initializer attempts to read self.collection_obj and assign it to self.collection;
+            if that attribute is None, collection is set to an empty list.
+        Side effects
+        -----------
+        - Calls dstore.load_dstore() during initialization (expects a dstore module/object in scope).
+        - Reads self.collection_obj to populate self.collection.
+        Notes
+        -----
+        - This initializer assumes the attributes and objects it references (for example,
+          dstore and self.collection_obj) are available in the module/class context where it
+          is used; missing references may raise NameError/AttributeError.
+        - No explicit exceptions are caught here; path resolution or dstore operations may
+          raise typical filesystem or runtime exceptions.
+        """     
+        
         self.name = f'{Path(out_dir).name}__{out_image_w:03d}'
         self.is_cohort = False 
         self.out_image_w = out_image_w 

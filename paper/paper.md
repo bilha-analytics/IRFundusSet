@@ -64,8 +64,22 @@ Table \autoref{tbl:cohortz} lists these sources and their properties. For brevit
 # Functionality
 The Python modules are structured such that the user simply needs to download the source datasets to a local directory, and subsequently execute the Python package to parse, catalog and harmonize the retinal fundus images into a unified dataset. All or some of the identified sources can be considered for unification, and a template configuration (INI) file is provided, which specifies the location of included sources. Access points include a command line generate function and a dataset iterator (algined with PyTorch datasets) for seemless integration into modeling pipelines. A user guide in the form of a Jupyter Notebook~\cite{noauthor_jupyter_nodate} is included with the package.
 
-
-
+```python
+## Creating IRFundusSet Dataset object 
+## Generates the unified dataset if it does not already exist
+irf_dataset = IRFundusSet(out_dir="../output_irfundus_set__256",
+                        ## Set output image sizes and harmonization method
+                        out_img_w_size=256,
+                        harmonize_method=None,
+                        ## Set which of the 10 public sources to unify 
+                        in_cohorts_config="../cohorts.ini", 
+                        generate_only=False,
+                        ## Setting which column to use for target label 
+                        target_col=None,     
+                        ## Provide transforms for X image features or y-target labels   
+                        xtransform=None, 
+                        ytransform=None,)
+```
 
 
 ## Harmonizing the pixel data
@@ -80,22 +94,7 @@ Figure \autoref{fig:flow-chart}  summarizes the steps taken to arrive at this la
 
 
 ## Summary of data properties
-Table \autoref{tbl:curated} summarizes some properties of the unified dataset. Of the 46,064 images, 25,406 images successfully undergo the curation and annotation process, resulting in 19,871 images being assigned a new `is_normal` label indicating if they are non-pathological or not. Figure \autoref{fig:img-propz}  qualititatively explores for biases in the newly curateed `is_nromal` label using t-SNE components of the harmonized images (from standardizing with mean and standard deviation). There is no apparent clustering that discernably deliniates the images based on the label. Figure \autoref{fig:examples} is a snapshot of the resulting unified catalogue, illustrating the metadata collected for the images. 
-
-
-
-**Table 2: ***
-
-[][tbl:curated]
-
-| Curated label | n images | n images curated | \% of all images | \% left eye |
-|---|---|---|---|---|
-| Normal | 3515 | 3515 | 0.08 | 0.49 |
-| Not normal | 16356 | 16356 | 0.36 | 0.49 |
-| Total with label | 19871 | 19871 | 0.43 | 0.49 |
-| No label assigned | 26193 | 5535 | 0.57 | 0.50 |
-
-
+Of the 46,064 images, 25,406 images successfully undergo the curation and annotation process, resulting in 19,871 images being assigned a new `is_normal` label indicating if they are non-pathological or not. We determine 3,515 to be healthy/Normal/non-pathological across the sources. Figure \autoref{fig:img-propz}  qualititatively explores for biases in the newly curateed `is_nromal` label using t-SNE components of the harmonized images (from standardizing with mean and standard deviation). There is no apparent clustering that discernably deliniates the images based on the label. Figure \autoref{fig:examples} is a snapshot of the resulting unified catalogue, illustrating the metadata collected for the images. 
 
 
 ![Properties of unified image data.\label{fig:img-propz}](image-xtics-plot1.jpg)
@@ -109,13 +108,7 @@ The Integrated Retinal Fundus Set (IRFundusSet) is publicly available on Github 
 
 
 # Acknowledgements
-We thank the support from the National Natural Science Foundation of China 31970752; 32350410397; Science,
- Technology, Innovation Commission of Shenzhen Municipality JSGG20200225150707332, JCYJ20220530143014032,
- WDZC20200820173710001, WDZC20200821150704001; Shenzhen Medical Academy of Research and Translation,
- D2301002; Shenzhen Bay Laboratory Open Funding, SZBL2020090501004; Department of Chemical Engineering
-iBHE special cooperation joint fund project, DCE-iBHE-2022-3; Tsinghua Shenzhen International Graduate School
- Cross-disciplinary Research and Innovation Fund Research Plan, JC2022009; and Bureau of Planning, Land and
- Resources of Shenzhen Municipality (2022) 207.
+We thank the support from the National Natural Sci-ence Foundation of China 31970752; Science, Technology, Innovation Commission of Shenzhen Municipality JCYJ20190809180003689, JSGG20200225150707332,JCYJ20220530143014032,ZDSYS20200820165400003,WDZC20200820173710001, WDZC20200821150704001, JSGG20191129110812708,KCXFZ20211020163813019; Shenzhen Bay Laboratory Open Funding, SZBL2020090501004; Department of Chemical Engineering-iBHE special cooperation joint fund project, DCE-iBHE-2022-3; Tsinghua Shenzhen Interna-tional Graduate School Cross-disciplinary Research and Innovation Fund Research Plan, JC2022009; and 　 Bureau of Planning, Land and Resources of Shenzhen Municipality (2022) 207.
  
 # References
 

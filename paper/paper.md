@@ -7,23 +7,23 @@ authors:
     - name: 
         given-names: P. Bilha 
         surname: Githinji
-    orcid: 0009-0000-2080-4979 
-    affiliation: "1"    
+      orcid: 0009-0000-2080-4979 
+      affiliation: "1"    
     - name: Keming Zhao 
-    orcid: 0000-0002-0682-2780 
-    affiliation: "2"
+      orcid: 0000-0002-0682-2780 
+      affiliation: "2"
     - name: Jiantao Wang
-    orcid:  0000-0000-0000-0000
-    affiliation: "2"
+      orcid:  0000-0000-0000-0000
+      affiliation: "2"
     - name: Peiwu Qin
-    orcid: 0000-0001-7336-7848
-    corresponding: true
-    affiliation: "1"
+      orcid: 0000-0001-7336-7848
+      corresponding: true
+      affiliation: "1"
 affiliations:
-    -  name: Tsinghua University, Tsinghua-Berkeley Shenzhen Institute, Shenzen, China
-    index: 1
+    - name: Tsinghua University, Tsinghua-Berkeley Shenzhen Institute, Shenzen, China
+      index: 1
     - name: Shenzhen Eye Hospital, Jinan University, Shenzhen Eye Institute, Shenzhen, China
-    index: 2
+      index: 2
 date: 17 October 2025
 bibliography: paper.bib
 ---

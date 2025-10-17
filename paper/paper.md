@@ -38,9 +38,27 @@ The advancement and critical translation of artificial intelligence (AI) solutio
 
 # The data sources
 IRFundusSet indexes a collection of 46,064 RFP images from 10 public archives, which are selected based on ease of access as well as for their potential to represent diverse properties for RFP modeling. Together, the sources capture multiple collection centers, several ethinicities and age groups, and common retinal pathologies like Diabetic Retinopathy (DR), Diabetic Macula Edema (DME), Age-relateed Macular Degeneration (AMD), Glaucoma, Cataracts and Pathological Myopia (PM). 
-Table xxx lists these sources and their properties. For brevity purposes, a detailed description of each source and its contribution is available in the associated pre-print for this record[@arxiv-entry]. 
+Table \autoref{tbl:cohortz} lists these sources and their properties. For brevity purposes, a detailed description of each source and its contribution is available in the associated pre-print for this record[@arxiv-entry]. 
 
-<Table HERE;>
+
+**Table 1: Public retinal fundus datasets in IRFundusSet**
+[][tbl:cohortz]
+|  | n images | n src normal | \% left eye | \% curated | \% old was normal | \% new is normal |
+|---|---|---|---|---|---|---|
+| CHASEDB1 | 28 | 0 | 0.50 | 1.00 | 0.000 | 0.000 |
+| HRF | 45 | 15 | 0.47 | 1.00 | 0.333 | 0.289 |
+| STARE | 397 | 36 | 0.46 | 1.00 | 0.091 | 0.076 |
+| PAPILA | 488 | 333 | 0.50 | 1.00 | 0.682 | 0.168 |
+| IDRiD | 597 | 168 | 0.52 | 1.00 | 0.281 | 0.201 |
+| Retina Cataracts | 601 | 300 | 0.50 | 1.00 | 0.499 | 0.186 |
+| FIVE | 800 | 200 | 0.47 | 1.00 | 0.250 | 0.176 |
+| Kaggle1000 | 1000 | 38 | 0.42 | 1.00 | 0.038 | 0.038 |
+| ODIR | 7000 | 2816 | 0.50 | 1.00 | 0.402 | 0.117 |
+| EyePACS | 35108 | 25802 | 0.50 | 0.41 | 0.735 | 0.149 |
+| Total | 46064 | 29708 | 0.48 | 0.94 | 0.331 | 0.140 |
+| Without EyePACS | 10956 | 3906 | 0.48 | 1.00 | 0.286 | 0.139 |
+
+
 
 
 # Functionality
@@ -62,9 +80,23 @@ Figure \autoref{fig:flow-chart}  summarizes the steps taken to arrive at this la
 
 
 ## Summary of data properties
-Table xxx summarizes some properties of the unified dataset. Of the 46,064 images, 25,406 images successfully undergo the curation and annotation process, resulting in 19,871 images being assigned a new `is_normal` label indicating if they are non-pathological or not. Figure \autoref{fig:img-propz}  qualititatively explores for biases in the newly curateed `is_nromal` label using t-SNE components of the harmonized images (from standardizing with mean and standard deviation). There is no apparent clustering that discernably deliniates the images based on the label. Figure \autoref{fig:examples} is a snapshot of the resulting unified catalogue, illustrating the metadata collected for the images. 
+Table \autoref{tbl:curated} summarizes some properties of the unified dataset. Of the 46,064 images, 25,406 images successfully undergo the curation and annotation process, resulting in 19,871 images being assigned a new `is_normal` label indicating if they are non-pathological or not. Figure \autoref{fig:img-propz}  qualititatively explores for biases in the newly curateed `is_nromal` label using t-SNE components of the harmonized images (from standardizing with mean and standard deviation). There is no apparent clustering that discernably deliniates the images based on the label. Figure \autoref{fig:examples} is a snapshot of the resulting unified catalogue, illustrating the metadata collected for the images. 
 
-<Table: data properties>
+
+
+**Table 2: ***
+
+[][tbl:curated]
+
+| Curated label | n images | n images curated | \% of all images | \% left eye |
+|---|---|---|---|---|
+| Normal | 3515 | 3515 | 0.08 | 0.49 |
+| Not normal | 16356 | 16356 | 0.36 | 0.49 |
+| Total with label | 19871 | 19871 | 0.43 | 0.49 |
+| No label assigned | 26193 | 5535 | 0.57 | 0.50 |
+
+
+
 
 ![Properties of unified image data.\label{fig:img-propz}](image-xtics-plot1.jpg)
 

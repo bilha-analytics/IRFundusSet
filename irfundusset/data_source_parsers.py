@@ -44,18 +44,6 @@ _cohort_namez = {
 }
 
 
-def tester_df(sxn):
-    _old_root_dir = "D:\\xData\\fundus\\"
-    
-    def update_fpath(rec):        
-        rec = rec.replace('/',"\\").replace(_old_root_dir, "")  
-        rec = "\\".join(str(rec).split("\\")[3:] )
-        return rec 
-    
-    df = pd.read_csv("D:\\xData\\fundus\\00_HARMONIZED\\10_eye_centered_norm_anom_dataset__harmonized_512.csv")
-    df = df[df['listing']==_cohort_namez[sxn]].filter(['image_fpath',])
-    return df 
-
 _REGISTRY = {}
 def is_parser(func):    
     _REGISTRY[func.__name__] = func

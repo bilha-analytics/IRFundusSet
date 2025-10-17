@@ -90,7 +90,7 @@ The Python modules standardize both the meta information and pixel data of the r
 We leverage existing extensive literature (such as clinical literature, visual atlases and specialized guidelines) to resolve the varying definitions of what a healthy on non-pathological observation entails. Three rounds of manual curation determine a global non-pathological label, incrementally refining the quality of the label and eventually updating the consolidated data catalogue with this label.
 Figure \autoref{fig:flow-chart}  summarizes the steps taken to arrive at this label.
 
-![Flow chart depicting the process of curating non-pathological observations and creating the new `is_normal` label.\label{fig:flow-chart}](curate-flow.jpg)
+![Flow chart depicting the process of curating non-pathological observations and creating the new `is_normal` label.\label{fig:flow-chart}](curate-flow.jpg){width="70%"}
 
 
 ## Summary of data properties

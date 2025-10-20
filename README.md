@@ -16,7 +16,7 @@ The curated catalogue is available [on Zenodo here](https://zenodo.org/doi/10.52
 
 Identified datasets are in the public space and, therefore, we leave it to the researcher to access and directly download the datasets. 
 
-For testing purposes, you can download [CHASEDB](https://www.kaggle.com/datasets/khoongweihao/chasedb1), which is currently the smallest source in the collection (about 73 Mb). [High-Resolution Fundus (HRF)](https://www5.informatik.uni-erlangen.de/fileadmin/research/datasets/fundus-images/all.zip) is the second smallest source. 
+For testing purposes, you can download [CHASEDB](https://www.kaggle.com/datasets/khoongweihao/chasedb1), which is currently the smallest source in the collection (about 3 Mb). [High-Resolution Fundus (HRF)](https://www5.informatik.uni-erlangen.de/fileadmin/research/datasets/fundus-images/all.zip) is the second smallest source (about 73Mb). 
 
 
 **Generate integrated dataset**

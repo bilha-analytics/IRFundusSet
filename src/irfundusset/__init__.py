@@ -11,7 +11,7 @@ def IRFundusSet(in_cohorts_config,
                 xtransform=None, 
                 ytransform=None, 
                 target_col=None,
-                method='zscore',
+                harmonize_method='zscore',
                 generate_only=False, ):
     """
     Create or load a harmonized IR fundus dataset.
@@ -48,7 +48,7 @@ def IRFundusSet(in_cohorts_config,
     target_col : str or None, optional (default=None)
             Name of the column/field in the internal collection to use as the target
             variable. If None, the dataset builder will use its default target selection.
-    method : str, optional (default='zscore')
+    harmonize_method : str, optional (default='zscore')
             Harmonization method identifier passed to the harmonization pipeline (e.g.
             'zscore', or other methods supported by DS.HarmonizedDataSource.generate).
     generate_only : bool, optional (default=False)
@@ -86,7 +86,7 @@ def IRFundusSet(in_cohorts_config,
                                   out_image_w=out_img_w_size,)    
     hstatus = h.generate(in_cohorts_config=in_cohorts_config, 
                    force_regenerate=force_regenerate,
-                   method=method,
+                   method=harmonize_method,
                    clahe_b4_harmonize=clahe_b4_harmonize,)  
        
     # ii. load and return dataset 

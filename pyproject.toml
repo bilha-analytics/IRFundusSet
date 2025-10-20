@@ -1,0 +1,48 @@
+[build-system]
+requires = ["hatchling >= 1.26"]
+build-backend = "hatchling.build"
+
+[project]
+name = "irfundusset"
+version = "1.0.0"
+authors = [
+  { name="P.Bilha Githinji", email="bilha.analytics@gmail.com" },
+]
+keywords = ["retinal fundus", "image dataset"]
+description = "The Integrated Retinal Fundus Set (IRFundusSet) systematically integrates 46,064 RFPs from ten distinct public sources into a unified structure, implementing essential methodological steps to enable collation of archives, standardization of image pixel data, and seamless integration into a modelling pipeline."
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+license = "MIT"
+license-files = ["LICEN[CS]E*"]
+
+# MAIN DEPENDENCIES - installed with the package
+dependencies = [
+    "numpy>=2.0.0",
+    "pandas>=2.1.4",
+    "scikit-image>=0.22.0", 
+    "opencv-python-headless>=4.9.0.80", 
+    "tqdm>=4.65.0"
+]
+
+
+
+[project.urls]
+Homepage = "https://github.com/bilha-analytics/IRFundusSet/"
+Issues = "https://github.com/bilha-analytics/IRFundusSet/issues"
+
+[tool.hatch.build]
+# Explicitly exclude JOSS/development files
+exclude = [ 
+    "CITATION.cff",
+    ".zenodo.json",
+    ".github/",
+    "docs/",           # Source docs, built docs hosted separately
+    "tests/",
+    "*.github/*",
+    "joss/*",
+    "paper/*",
+]

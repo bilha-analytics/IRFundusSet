@@ -116,7 +116,7 @@ class DataframeDataset:
     col_image_id = VAR_COL_HARMD_IMAGE_FPATH 
     _listing = None
     
-    def __init__(self, csv, xtransform=None, ytransform=None, target_col=None):
+    def __init__(self, csv, xtransform=None, ytransform=None, target_col=None, sample_balance_normal_vs_not_normal=False):
         """
         Data source class that initializes dataset listing and optional transforms.
         Parameters
@@ -162,19 +162,22 @@ class DataframeDataset:
         self.xtransform = xtransform 
         self.ytransform = ytransform 
         self.target_col = VAR_COL_IS_NORMAL if target_col is None else target_col
-        self._init_listing(csv) 
+        self._init_listing(csv, sample_balance_normal_vs_not_normal) 
         
-    def _init_listing(self, csv):
+    def _init_listing(self, csv, sample_balance_normal_vs_not_normal):
         # i. load listing & drop NaN @ target col
         df_all = csv if isinstance(csv, pd.DataFrame) else pd.read_pickle(csv)
         df_all = df_all.filter(self.other_colz+self.target_colz).dropna(subset=self.target_col).reset_index(drop=True)   	
-        # ii. subset normalz
-        df_normz = df_all[df_all[VAR_COL_IS_NORMAL]==VALUE_IS_NORMAL]
-        # iii. subset anomz to n match normalz 
-        df_anomz = df_all[df_all[VAR_COL_IS_NORMAL]==VALUE_IS_NOT_NORMAL]
-        df_anomz = df_anomz.sample(min(len(df_anomz), len(df_normz))).reset_index(drop=True) 
-        # iv. fini
-        self._listing = pd.concat([df_normz, df_anomz])
+        if sample_balance_normal_vs_not_normal:
+            # ii. subset normalz
+            df_normz = df_all[df_all[VAR_COL_IS_NORMAL]==VALUE_IS_NORMAL]
+            # iii. subset anomz to n match normalz 
+            df_anomz = df_all[df_all[VAR_COL_IS_NORMAL]==VALUE_IS_NOT_NORMAL]
+            df_anomz = df_anomz.sample(min(len(df_anomz), len(df_normz))).reset_index(drop=True) 
+            # iv. fini
+            self._listing = pd.concat([df_normz, df_anomz])
+        else:
+            self._listing = df_all
     
     def __len__(self):
         return len(self._listing)  if self._listing is not None else 0
@@ -394,6 +397,7 @@ class HarmonizedDataSource(SaveableSource):
     Obj: 
     - Is a collection of datasources; knows what's contained within the `unified` lot  + does the consolidation logic 
     - Entry point for generate and load/get dataset 
+    TODO: organize
     '''
     def __init__(self, out_dir, out_image_w=32) -> None:
         """
@@ -471,20 +475,35 @@ class HarmonizedDataSource(SaveableSource):
         
         pbar = tqdm( total=len(in_config.sections()) + 4)
         
+        
+        print(f">> To integrate {len(in_config.sections())} sources: {in_config.sections()}")
+
         for sxn in in_config.sections():
-            pbar.set_description(f"Parsing {sxn}")
-            self.collection.append(sxn) 
-            ds = CohortDataSource(sxn_name=sxn) 
-            df = ds.generate_listing(local_dir=in_config.get(sxn, 'local_dir'), 
+            local_dir= in_config.get(sxn, 'local_dir')
+            src_dir_exists = Path(local_dir)
+            src_dir_exists = src_dir_exists.exists() and src_dir_exists.is_dir()            
+            pbar.set_description(f"Parsing {sxn} in [dir exists = {src_dir_exists}] {local_dir}")
+            if src_dir_exists:
+                self.collection.append(sxn) 
+                ds = CohortDataSource(sxn_name=sxn) 
+                df = ds.generate_listing(local_dir=local_dir, 
                                                 out_dir=out_dir, 
                                                 out_img_w=self.out_image_w,
                                                 clahe_b4_harmonize=clahe_b4_harmonize) 
-            if len(df) > 0:
-                df[VAR_COL_LISTING] = sxn 
-                curated_dfz.append(df)              
-            pbar.set_description(f"Finished Parsing {sxn}")
+                if len(df) > 0:
+                    df[VAR_COL_LISTING] = sxn 
+                    curated_dfz.append(df) 
+                found_n_rows = len(df)
+                pbar.set_description(f"Finished Parsing {sxn}. Found {found_n_rows} rows")
+            else:
+                pbar.set_description(f"Finished Parsing {sxn}. Directory {local_dir} does not exist!! Recheck configuration file") 
+                print(f"Finished Parsing {sxn}. Directory {local_dir} does not exist!! Recheck configuration file")           
             pbar.update(1)
             
+        if len(curated_dfz)==0:
+            return ("No data to integrate. Check configuration file with list of sources. ")
+        
+        
         uni_curated_df = pd.concat(curated_dfz)
                         
         ## ii. b4 stats df listing = cohort + all 
@@ -649,7 +668,9 @@ class HarmonizedDataSource(SaveableSource):
     
     @property
     def is_generated(self):
-        ''' True if unfied_harmnized-csv exists in dstore '''
+        ''' True if unfied_harmonized-csv exists in dstore '''
+        # curated_master_csv = Path(out_dir) / VAR_OUT_HARMD_MASTER_CSV(self.out_image_w) 
+        # return curated_master_csv.exists() and curated_master_csv.is_file()
         return self.curated_listing_exists 
     
     def __len__(self):

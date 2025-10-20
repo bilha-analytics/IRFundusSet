@@ -41,6 +41,7 @@ IRFundusSet identifies ten public RFP repositories based on ease of access and t
 
 
 **Table 1: Public retinal fundus datasets in IRFundusSet**
+
 | Cohort | n images | n labels | year | region | n centers | FOV | mydriatic | n sizes | n file types |
 |---|---|---|---|---|---|---|---|---|---|
 | CHASEDB1[@fraz_ensemble_2012]| 28 | 1 | 2011 | UK | 1 | 30 |  | 1 | 1 |
@@ -90,6 +91,7 @@ The Python modules implement systematic standardization across both image metada
 We leverage existing extensive literature (such as clinical literature, visual atlases and specialized guidelines) to resolve the varying definitions of what a healthy or non-pathological observation entails. Three rounds of manual curation determine a global non-pathological label, incrementally refining the quality of the label and eventually updating the consolidated data catalogue with this label. Figure 1 summarizes the steps taken to arrive at this label.
 
 **Figure 1: Flow chart depicting the process of curating non-pathological observations and creating the new `is_normal` label.**
+
 ![Flow chart depicting the process of curating non-pathological observations and creating the new `is_normal` label.\label{fig:flow-chart}](curate-flow.jpg){width="70%" .center-image}
 
 
@@ -99,15 +101,19 @@ We consolidate 46,064 images from the ten archives and manually curate 25,406 im
 
 
 **Figure 2: Pixel data properties.**
+
 ![Properties of unified image data.\label{fig:img-propz}](image-xtics-plot1.jpg)
 
 
+
 **Figure 3: Example records in the unified catalogue.**
+
 ![Example image records in unified catalogue.\label{fig:examples}](sample-records-catalogue.jpg)
 
 
 
 **Table 2: Distribution of new label** 
+
 |  | n images | n src normal | \% left eye | \% curated | \% old was normal | \% new is normal |
 |---|---|---|---|---|---|---|
 | CHASEDB1 | 28 | 0 | 0.50 | 1.00 | 0.000 | 0.000 |

@@ -1,5 +1,5 @@
 ---
-title: 'IRFundusSet: A harmonized collection of public retinal fundus dataset'
+title: 'IRFundusSet: A harmonized collection of public retinal fundus datasets'
 tags:
     - python
     - ophthalmology

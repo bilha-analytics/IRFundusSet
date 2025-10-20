@@ -33,7 +33,7 @@ Leveraging public datasets of Retinal Fundus Photographs (RFPs) is burdened by t
 
 
 # Statement of need
-Access to large-scale, diverse and representative datasets enables robust model training and generalizability, a challenge in the translation of retinal fundus-based artificial intelligence (AI)[@grzybowski_artificial_2023-2]. While aggregated public RFP datasets offer the requisite diversity and scale, their consolidation into a cohesive analytical resource is encumbered by methodological non-uniformity[@khan_global_2021]. This technical heterogeneity across data from various centers and acquisition periods introduces systematic biases and imposes a significant, redundant data preparation burden on researchers. The Integrated Retinal Fundus Set (IRFundusSet) takes on the challenges of consolidating disparate directory structures, establishing harmonization dimensions, preparing the standardization operations, and, eventually, establishing the unified dataset, allowing research efforts to focus on core scientific issues. 
+Access to large-scale, diverse and representative datasets enables robust model training and generalizability, a challenge in the translation of retinal fundus-based artificial intelligence (AI)[@grzybowski_artificial_2023]. While aggregated public RFP datasets offer the requisite diversity and scale, their consolidation into a cohesive analytical resource is encumbered by methodological non-uniformity[@khan_global_2021]. This technical heterogeneity across data from various centers and acquisition periods introduces systematic biases and imposes a significant, redundant data preparation burden on researchers. The Integrated Retinal Fundus Set (IRFundusSet) takes on the challenges of consolidating disparate directory structures, establishing harmonization dimensions, preparing the standardization operations, and, eventually, establishing the unified dataset, allowing research efforts to focus on core scientific issues. 
  
 
 # The data sources
@@ -43,11 +43,11 @@ IRFundusSet identifies ten public RFP repositories based on ease of access and t
 **Table 1: Public retinal fundus datasets in IRFundusSet**
 | Cohort | n images | n labels | year | region | n centers | FOV | mydriatic | n sizes | n file types |
 |---|---|---|---|---|---|---|---|---|---|
-| CHASEDB1[@fraz_chase_db1_2012,@fraz_ensemble_2012]| 28 | 1 | 2011 | UK | 1 | 30 |  | 1 | 1 |
+| CHASEDB1[@fraz_ensemble_2012]| 28 | 1 | 2011 | UK | 1 | 30 |  | 1 | 1 |
 | HRF[@odstrcilik_retinal_2013]| 45 | 3 | 2013 | EU | 1 | 45 |  | 1 | 2 |
 | STARE[@hoover_locating_2000]| 397 | 42 |  | USA | 2 |  |  | 1 | 1 |
 | PAPILA[@kovalyk_papila:_2022]| 488 | 3 | 2018 – 2020 | Spain | 1 | 30 | no | 1 | 1 |
-| IDRiD[@porwal_indian_2018] | 516 | 11 | 2009 – 2017 | India | 1 | 50 | yes | 1 | 1 |
+| IDRiD[@prasanna_porwal_indian_2018] | 516 | 11 | 2009 – 2017 | India | 1 | 50 | yes | 1 | 1 |
 | Retina Cataracts[@noauthor_cataract_nodate] | 601 | 4 |  |  |  |  |  | 1 | 1 |
 | FIVES[@jin_fives:_2022] | 800 | 4 | 2016 – 2021 | China | 1 | 50 | yes | 1 | 1 |
 | Kaggle1000[@cen_automatic_2021] | 1000 | 39 | 2009 – 2018 | China | 1 | 35 – 50 | yes | 17 | 3 |

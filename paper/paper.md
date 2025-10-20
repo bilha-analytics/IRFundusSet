@@ -90,7 +90,6 @@ The Python modules implement systematic standardization across both image metada
 ## Curating a global not-pathological label
 We leverage existing extensive literature (such as clinical literature, visual atlases and specialized guidelines) to resolve the varying definitions of what a healthy or non-pathological observation entails. Three rounds of manual curation determine a global non-pathological label, incrementally refining the quality of the label and eventually updating the consolidated data catalogue with this label. Figure 1 summarizes the steps taken to arrive at this label.
 
-**Figure 1: Flow chart depicting the process of curating non-pathological observations and creating the new `is_normal` label.**
 
 ![Flow chart depicting the process of curating non-pathological observations and creating the new `is_normal` label.\label{fig:flow-chart}](curate-flow.jpg){width="70%" .center-image}
 
@@ -100,15 +99,13 @@ We leverage existing extensive literature (such as clinical literature, visual a
 We consolidate 46,064 images from the ten archives and manually curate 25,406 images for annotation with a global `is_normal` label. Of the curated images, we confidently label 19,871 images, of which 3,515 eyes are deemed healthy, normal or non-pathological. Table 2 summarizes the distributions of the resulting unified dataset, while Figure 2 includes a t-SNE plot that qualitatively explores  biases associated with the newly curated `is_normal` label. We find no distinct segregation of the images based on this new label. A snapshot of the resulting unified catalogue, demonstrating available metadata, is illustrated in Figure 3. 
 
 
-**Figure 2: Pixel data properties.**
 
 ![Properties of unified image data.\label{fig:img-propz}](image-xtics-plot1.jpg)
 
 
 
-**Figure 3: Example records in the unified catalogue.**
 
-![Example image records in unified catalogue.\label{fig:examples}](sample-records-catalogue.jpg)
+![Example records in the unified catalogue.\label{fig:examples}](sample-records-catalogue.jpg)
 
 
 

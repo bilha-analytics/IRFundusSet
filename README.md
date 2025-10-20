@@ -9,7 +9,7 @@ Identified datasets are in the public space and, therefore, we leave it to the r
 
 Once downloaded, obtain the template configuration file `template_set_cohorts.ini` and indicate where the datasets are located. 
 
-Then initialize your IRFundusSet data object as shown below to generated the consolidated dataset and save it to your desired location.
+Then initialize your IRFundusSet dataset object as shown below, so as to generate the consolidated dataset and save it to your desired location.
 
 ```python
 ## Creating IRFundusSet Dataset object 
@@ -28,9 +28,10 @@ irf_dataset = IRFundusSet(out_dir="../output_irfundus_set__256",
                         ## Provide transforms for X image features or y-target labels   
                         xtransform=None, 
                         ytransform=None,)
+
+## Access first record in the dataset
+sample_record = irf_dataset[0] 
 ```
-
-
 
 **User guide (Jupyter Notebook)**
 An introductory user guide in the form of Jupyter Notebook is available at the root of this repository. The file name is `irfundusset_user_guide.ipynb`

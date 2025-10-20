@@ -53,18 +53,20 @@ def create_listing(local_dir):
 
     recz = [] 
     recz_colz = [RAW_IMAGE_FNAME_AS_ID, RAW_IMAGE_FPATH, ] 
-    for k, v in IDRIDataset_dir_struct.items():
-        droot = v['root']     
-        for split in ['train','test']:
-            data_origi = v[split]['origi']['fpath']
-            ## i. make record for each origi img --> kind is always img,
-            dl_origi = (local_dir / droot / data_origi).glob("*")
-            for fp in dl_origi:
-                fname = fp.stem  
-                if fp.exists() and fp.is_file(): 
-                    recz.append( [fname, str(fp.resolve()), ])
+    if local_dir.exists() and local_dir.is_dir(): 
+        for k, v in IDRIDataset_dir_struct.items():
+            droot = v['root']     
+            for split in ['train','test']:
+                data_origi = v[split]['origi']['fpath']
+                ## i. make record for each origi img --> kind is always img,
+                dl_origi = (local_dir / droot / data_origi).glob("*")
+                for fp in dl_origi:
+                    fname = fp.stem  
+                    if fp.exists() and fp.is_file(): 
+                        recz.append( [fname, str(fp.resolve()), ])
 
     df = pd.DataFrame.from_records(recz) 
-    df.columns = recz_colz 
+    if len(df)>0:
+        df.columns = recz_colz
     return df
 

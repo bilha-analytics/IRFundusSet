@@ -16,11 +16,12 @@ def create_listing(local_dir):
     
     recz = [] 
     recz_colz = [RAW_IMAGE_FNAME_AS_ID, RAW_IMAGE_FPATH, ]    
-    for ddir in local_dir.glob("*"):
-        for fp in ddir.glob("*"):
-            fname = fp.stem  
-            if fp.exists() and fp.is_file(): 
-                recz.append( [fname, str(fp.resolve()), ])    
+    if local_dir.exists() and local_dir.is_dir(): 
+        for ddir in local_dir.glob("*"):
+            for fp in ddir.glob("*"):
+                fname = fp.stem  
+                if fp.exists() and fp.is_file(): 
+                    recz.append( [fname, str(fp.resolve()), ])    
     
     df = pd.DataFrame.from_records(recz)
     if len(df) > 0:

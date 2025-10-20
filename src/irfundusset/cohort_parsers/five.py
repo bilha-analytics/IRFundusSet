@@ -15,14 +15,16 @@ def create_listing(local_dir):
     local_dir = Path(local_dir)  
     
     recz = [] 
-    recz_colz = [RAW_IMAGE_FNAME_AS_ID, RAW_IMAGE_FPATH, ]  
-    for split in ['test', 'train']:
-        ddir = local_dir / split / 'Original'
-        for fp in ddir.glob("*.png"):
-            fname = fp.stem  
-            if fp.exists() and fp.is_file(): 
-                recz.append( [fname, str(fp.resolve()), ])    
+    recz_colz = [RAW_IMAGE_FNAME_AS_ID, RAW_IMAGE_FPATH, ] 
+    if local_dir.exists() and local_dir.is_dir():  
+        for split in ['test', 'train']:
+            ddir = local_dir / split / 'Original'
+            for fp in ddir.glob("*.png"):
+                fname = fp.stem  
+                if fp.exists() and fp.is_file(): 
+                    recz.append( [fname, str(fp.resolve()), ])    
     
     df = pd.DataFrame.from_records(recz)
-    df.columns = recz_colz
+    if len(df)>0:
+        df.columns = recz_colz
     return df 

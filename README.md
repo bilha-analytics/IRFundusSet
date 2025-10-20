@@ -16,7 +16,7 @@ The curated catalogue is available [on Zenodo here](https://zenodo.org/doi/10.52
 
 Identified datasets are in the public space and, therefore, we leave it to the researcher to access and directly download the datasets. 
 
-For testing purposes, you can download [CHASEDB](https://www5.informatik.uni-erlangen.de/fileadmin/research/datasets/fundus-images/all.zip), which is currently the smallest source in the collection (about 73 Mb). 
+For testing purposes, you can download [CHASEDB](https://www.kaggle.com/datasets/khoongweihao/chasedb1), which is currently the smallest source in the collection (about 73 Mb). 
 
 
 **Generate integrated dataset**
@@ -28,7 +28,7 @@ Then initialize your IRFundusSet data object as shown below to generated the con
 ```python
 ## Creating IRFundusSet Dataset object 
 ## Generates the unified dataset if it does not already exist
-irf_dataset = IRFundusSet(out_dir="../output_irfundus_set__256",
+irf_dataset = IRFundusSet(out_dir="../output_irfundus_set",
                         ## Set output image sizes and harmonization method
                         out_img_w_size=256,
                         harmonize_method=None,
@@ -42,6 +42,7 @@ irf_dataset = IRFundusSet(out_dir="../output_irfundus_set__256",
                         ## Provide transforms for X image features or y-target labels   
                         xtransform=None, 
                         ytransform=None,)
+print(">> irf_dataset = ",len(irf_dataset))
 ```
 
 

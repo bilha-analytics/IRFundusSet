@@ -16,6 +16,8 @@ The curated catalogue is available [on Zenodo here](https://zenodo.org/doi/10.52
 
 Identified datasets are in the public space and, therefore, we leave it to the researcher to access and directly download the datasets. 
 
+For testing purposes, you can download [CHASEDB](https://www5.informatik.uni-erlangen.de/fileadmin/research/datasets/fundus-images/all.zip), which is currently the smallest source in the collection (about 73 Mb). 
+
 
 **Generate integrated dataset**
 

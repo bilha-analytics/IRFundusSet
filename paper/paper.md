@@ -42,18 +42,18 @@ IRFundusSet identifies ten public RFP repositories based on ease of access and t
 
 **Table 1: Public retinal fundus datasets in IRFundusSet**
 
-| Cohort | n images | n labels | year | region | n centers | FOV | mydriatic | n sizes | n file types |
-|---|---|---|---|---|---|---|---|---|---|
-| CHASEDB1[@fraz_ensemble_2012]| 28 | 1 | 2011 | UK | 1 | 30 |  | 1 | 1 |
-| HRF[@odstrcilik_retinal_2013]| 45 | 3 | 2013 | EU | 1 | 45 |  | 1 | 2 |
-| STARE[@hoover_locating_2000]| 397 | 42 |  | USA | 2 |  |  | 1 | 1 |
-| PAPILA[@kovalyk_papila:_2022]| 488 | 3 | 2018 – 2020 | Spain | 1 | 30 | no | 1 | 1 |
-| IDRiD[@prasanna_porwal_indian_2018] | 516 | 11 | 2009 – 2017 | India | 1 | 50 | yes | 1 | 1 |
-| Retina Cataracts[@noauthor_cataract_nodate] | 601 | 4 |  |  |  |  |  | 1 | 1 |
-| FIVES[@jin_fives:_2022] | 800 | 4 | 2016 – 2021 | China | 1 | 50 | yes | 1 | 1 |
-| Kaggle1000[@cen_automatic_2021] | 1000 | 39 | 2009 – 2018 | China | 1 | 35 – 50 | yes | 17 | 3 |
-| ODIR[@noauthor_odir-2019_nodate,@noauthor_ocular_nodate] | 7000 | 329 |  | China | various | various |  | 101 | 1 |
-| EyePACS[@noauthor_diabetic_nodate,@noauthor_data_nodate] | 35108 | 5 |  | USA | 7 |  |  | 315 | 1 |
+| Cohort | n images | n labels | year | region | n centers | FOV | mydriatic |
+|---|---|---|---|---|---|---|---| 
+| CHASEDB1[@fraz_ensemble_2012]| 28 | 1 | 2011 | UK | 1 | 30 |  | 
+| HRF[@odstrcilik_retinal_2013]| 45 | 3 | 2013 | EU | 1 | 45 |  | 
+| STARE[@hoover_locating_2000]| 397 | 42 |  | USA | 2 |  |  | 
+| PAPILA[@kovalyk_papila:_2022]| 488 | 3 | 2018 – 2020 | Spain | 1 | 30 | no |  
+| IDRiD[@prasanna_porwal_indian_2018] | 516 | 11 | 2009 – 2017 | India | 1 | 50 | yes | 
+| Retina Cataracts[@noauthor_cataract_nodate] | 601 | 4 |  |  |  |  |  | 
+| FIVES[@jin_fives:_2022] | 800 | 4 | 2016 – 2021 | China | 1 | 50 | yes | 
+| Kaggle1000[@cen_automatic_2021] | 1000 | 39 | 2009 – 2018 | China | 1 | 35 – 50 | yes |
+| ODIR[@noauthor_odir-2019_nodate,@noauthor_ocular_nodate] | 7000 | 329 |  | China | various | various |  | 
+| EyePACS[@noauthor_diabetic_nodate,@noauthor_data_nodate] | 35108 | 5 |  | USA | 7 |  |  |
 
 
 
@@ -111,7 +111,7 @@ We consolidate 46,064 images from the ten archives and manually curate 25,406 im
 
 **Table 2: Distribution of new label** 
 
-|  | n images | n src normal | \% left eye | \% curated | \% old was normal | \% new is normal |
+|  | n images | n src normal | \% left eye | \% curated | \% old label was normal | \% new label is normal |
 |---|---|---|---|---|---|---|
 | CHASEDB1 | 28 | 0 | 0.50 | 1.00 | 0.000 | 0.000 |
 | HRF | 45 | 15 | 0.47 | 1.00 | 0.333 | 0.289 |

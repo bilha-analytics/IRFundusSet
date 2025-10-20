@@ -128,7 +128,9 @@ We consolidate 46,064 images from the ten archives and manually curate 25,406 im
 
 
 
+
 Example works making use of the dataset so far:
+
 - A diffusion model-based self-exlainable generative classifier for retinal image analysis[@omar_ahsan_diffusion_2025]. 
 - Harnessing intra-group variations via a population-level context for pathology detection[@githinji_harnessing_2024].
 

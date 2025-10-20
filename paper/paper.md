@@ -43,7 +43,7 @@ IRFundusSet identifies ten public RFP repositories based on ease of access and t
 **Table 1: Public retinal fundus datasets in IRFundusSet**
 | Cohort | n images | n labels | year | region | n centers | FOV | mydriatic | n sizes | n file types |
 |---|---|---|---|---|---|---|---|---|---|
-| CHASEDB1[@fraz_chase_db1_2012]| 28 | 1 | 2011 | UK | 1 | 30 |  | 1 | 1 |
+| CHASEDB1[@fraz_chase_db1_2012,@fraz_ensemble_2012]| 28 | 1 | 2011 | UK | 1 | 30 |  | 1 | 1 |
 | HRF[@odstrcilik_retinal_2013]| 45 | 3 | 2013 | EU | 1 | 45 |  | 1 | 2 |
 | STARE[@hoover_locating_2000]| 397 | 42 |  | USA | 2 |  |  | 1 | 1 |
 | PAPILA[@kovalyk_papila:_2022]| 488 | 3 | 2018 – 2020 | Spain | 1 | 30 | no | 1 | 1 |
@@ -52,7 +52,7 @@ IRFundusSet identifies ten public RFP repositories based on ease of access and t
 | FIVES[@jin_fives:_2022] | 800 | 4 | 2016 – 2021 | China | 1 | 50 | yes | 1 | 1 |
 | Kaggle1000[@cen_automatic_2021] | 1000 | 39 | 2009 – 2018 | China | 1 | 35 – 50 | yes | 17 | 3 |
 | ODIR[@noauthor_odir-2019_nodate,@noauthor_ocular_nodate] | 7000 | 329 |  | China | various | various |  | 101 | 1 |
-| EyePACS[@noauthor_diabetic_nodate] | 35108 | 5 |  | USA | 7 |  |  | 315 | 1 |
+| EyePACS[@noauthor_diabetic_nodate,@noauthor_data_nodate] | 35108 | 5 |  | USA | 7 |  |  | 315 | 1 |
 
 
 
@@ -86,7 +86,7 @@ irf_dataset = IRFundusSet(out_dir="../output_irfundus_set__256",
 The Python modules implement systematic standardization across both image metadata and pixel data. Metadata parameters include image resolution and output file format. Pixel harmonization is applied hierarchically, calculated first at the source level to mitigate within-cohort variations, and then globally to aggregate into the unified dataset. Reserchers may select between two scientifically supported normalization strategies: 1. A standard method that makes use of the mean and standard deviation, and 2. A robust method, which employs the median and inter-quartile range.    
 
 
-## Curating the not-pathological label
+## Curating a global not-pathological label
 We leverage existing extensive literature (such as clinical literature, visual atlases and specialized guidelines) to resolve the varying definitions of what a healthy or non-pathological observation entails. Three rounds of manual curation determine a global non-pathological label, incrementally refining the quality of the label and eventually updating the consolidated data catalogue with this label. Figure 1 summarizes the steps taken to arrive at this label.
 
 **Figure 1: Flow chart depicting the process of curating non-pathological observations and creating the new `is_normal` label.**

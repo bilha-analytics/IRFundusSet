@@ -8,6 +8,7 @@ version = "1.0.1"
 authors = [
   { name="P.Bilha Githinji", email="bilha.analytics@gmail.com" },
 ]
+keywords = ["retinal fundus", "image dataset"]
 description = "The Integrated Retinal Fundus Set (IRFundusSet) systematically integrates 46,064 RFPs from ten distinct public sources into a unified structure, implementing essential methodological steps to enable collation of archives, standardization of image pixel data, and seamless integration into a modelling pipeline."
 readme = "README.md"
 requires-python = ">=3.9"

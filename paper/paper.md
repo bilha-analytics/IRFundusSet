@@ -12,8 +12,7 @@ authors:
     - name: Keming Zhao 
       orcid: 0000-0002-0682-2780 
       affiliation: "2"
-    - name: Jiantao Wang
-      orcid:  0000-0000-0000-0000
+    - name: Jiantao Wang 
       affiliation: "2"
     - name: Peiwu Qin
       orcid: 0000-0001-7336-7848
@@ -34,7 +33,23 @@ Leveraging public datasets of Retinal Fundus Photographs (RFPs) is burdened by t
 
 # Statement of need
 Access to large-scale, diverse and representative datasets enables robust model training and generalizability, a challenge in the translation of retinal fundus-based artificial intelligence (AI)[@grzybowski_artificial_2023]. While aggregated public RFP datasets offer the requisite diversity and scale, their consolidation into a cohesive analytical resource is encumbered by methodological non-uniformity[@khan_global_2021]. This technical heterogeneity across data from various centers and acquisition periods introduces systematic biases and imposes a significant, redundant data preparation burden on researchers. The Integrated Retinal Fundus Set (IRFundusSet) takes on the challenges of consolidating disparate directory structures, establishing harmonization dimensions, preparing the standardization operations, and, eventually, establishing the unified dataset, allowing research efforts to focus on core scientific issues. 
- 
+
+# State of the field
+
+While several Python libraries exist for loading medical images, they typically assume that the data is already collated and uniformly structured[@cardoso_monai:_2022]. Moreover, works that present a collection of biomedical image datasets from diverse sources are primarily educational or geared towards prototyping, with archives of small samples and small-sized images (e.g., 28 x 28)[@yang_medmnist_2023]. To the best of our knowledge, IRFundusSet presents the first automated collation and loading of a large-scale collection of real-world retinal fundus datasets. Additionally, the module introduces a new human-curated global label for “healthy” status, resolving conflicting definitions across sources.
+
+# Software design
+
+The primary design approach was aimed at simplicity for researchers and seamless integration with existing deep learning pipelines. We opted for a modular configuration-driven design where users specify which datasets to include via an .ini file, and presented interfaces that aligned with PyTorch’s dataset objects. Additionally, the core logic adopts a factory design pattern that decouples dataset-specific parsing logic from the harmonization and loading pipeline, and sets up for easy integration of new data archives in the future.
+
+# Research impact statement
+
+IRFundusSet has already enabled downstream research, with the works listed below serving as initial evidence of its utility. The configuration-driven design and data-source parser factory make it straightforward for us to continually expand the resource, and for researchers to integrate their own private or custom datasets as well. A near-term direction is enriching the project with more fine-grained labels by applying natural language processing to the diverse clinical diagnosis texts associated with the images.
+
+**Example works making use of the dataset** 
+- A diffusion model-based self-explainable generative classifier for retinal image analysis[@omar_ahsan_diffusion_2025]. 
+- Harnessing intra-group variations via a population-level context for pathology detection[@githinji_harnessing_2024].
+
 
 # The data sources
 IRFundusSet identifies ten public RFP repositories based on ease of access and their contribution towards capturing diverse properties for RFP modeling. The sources represent multiple collection centers, several ethnicities and age groups, and a variety of retinal lesions and pathologies including Diabetic Retinopathy (DR), Diabetic Macula Edema (DME), Age-related Macular Degeneration (AMD), Glaucoma, Cataracts and Pathological Myopia (PM). Table 1 lists these sources and their properties. For brevity purposes, a detailed description of each source and its contribution is available in the [associated pre-print for this record](https://arxiv.org/abs/2402.11488). 
@@ -129,19 +144,18 @@ We consolidate 46,064 images from the ten archives and manually curate 25,406 im
 
 
 
-Example works making use of the dataset so far:
-
-- A diffusion model-based self-explainable generative classifier for retinal image analysis[@omar_ahsan_diffusion_2025]. 
-- Harnessing intra-group variations via a population-level context for pathology detection[@githinji_harnessing_2024].
-
 
 ## Code availability
 The Integrated Retinal Fundus Set (IRFundusSet) is publicly available on Github and Zenodo. The IRFundusSetPython modules are on Github at https://github.com/bilha-analytics/IRFundusSet, while the independent curated catalogue is on Zenodo at https://zenodo.org/records/10617824. 
 
 
+# AI Usage Disclosure
+No generative AI tools were used in the development of this software, the writing of this manuscript, or the preparation of supporting materials. 
+
 
 # Acknowledgements
 We thank the support from the National Natural Sci-ence Foundation of China 31970752; Science, Technology, Innovation Commission of Shenzhen Municipality JCYJ20190809180003689, JSGG20200225150707332,JCYJ20220530143014032,ZDSYS20200820165400003,WDZC20200820173710001, WDZC20200821150704001, JSGG20191129110812708,KCXFZ20211020163813019; Shenzhen Bay Laboratory Open Funding, SZBL2020090501004; Department of Chemical Engineering-iBHE special cooperation joint fund project, DCE-iBHE-2022-3; Tsinghua Shenzhen Interna-tional Graduate School Cross-disciplinary Research and Innovation Fund Research Plan, JC2022009; and 　 Bureau of Planning, Land and Resources of Shenzhen Municipality (2022) 207.
- 
+
+
 # References
 
